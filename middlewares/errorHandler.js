@@ -5,7 +5,7 @@ const errorHandler = (err, req, res, next) => {
 
 	error.message = err.message;
 
-	console.log(err.stack.red);
+	// console.log(err.stack.red);
 	console.log(err.name);
 
 	if (err.name === 'CastError') {

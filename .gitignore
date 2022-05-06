@@ -6,3 +6,6 @@ package-lock.json
 
 #env
 configs/.env
+
+#public files
+public

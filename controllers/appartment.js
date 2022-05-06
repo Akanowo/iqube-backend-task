@@ -1,6 +1,7 @@
 const asyncHandler = require('../middlewares/async');
 const { Appartment } = require('../models/Appartment');
 const { v4: uuidv4 } = require('uuid');
+const { cloudinary } = require('../configs/cloudinary');
 
 const handleGetAllAppartments = asyncHandler(async (req, res, next) => {
 	const appartments = await Appartment.find();

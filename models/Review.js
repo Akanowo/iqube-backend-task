@@ -17,8 +17,8 @@ const reviewSchema = new Schema({
 		required: [1, 'review comment is required'],
 		max: [500, 'max characters for review exceeded'],
 	},
-	image: String,
-	video: String,
+	images: [String],
+	videos: [String],
 	posted_by: {
 		type: Types.ObjectId,
 		ref: 'User',
@@ -36,6 +36,7 @@ const reviewSchema = new Schema({
 		type: [Types.ObjectId],
 		ref: 'User',
 	},
+	marked_helpful_by_guests: [String],
 	appartment: {
 		type: Types.ObjectId,
 		ref: 'Appartment',
