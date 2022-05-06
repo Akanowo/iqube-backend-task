@@ -52,8 +52,6 @@ const handleSignup = asyncHandler(async (req, res, next) => {
 
 	new_user_data.password = hashedPassword;
 
-	console.log('new user object: ', new_user_data);
-
 	// create new user
 	const new_user = await User.create(new_user_data);
 

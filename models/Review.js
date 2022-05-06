@@ -9,7 +9,7 @@ const reviewSchema = new Schema({
 	},
 	type: {
 		type: String,
-		enum: ['appartment', 'landlord', 'amenities'],
+		enum: ['environment', 'landlord', 'amenities'],
 		required: [1, 'review type is required'],
 	},
 	review: {

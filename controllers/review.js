@@ -32,8 +32,6 @@ const handleGetAllReviews = asyncHandler(async (req, res, next) => {
 		(match) => `$${match}`
 	);
 
-	console.log(queryStr);
-
 	// Find resource
 	if (appartment_id) {
 		query = Review.find({ appartment: appartment_id }).populate([
@@ -76,7 +74,7 @@ const handleGetAllReviews = asyncHandler(async (req, res, next) => {
 		const sortBy = req.query.sort.split(',').join(' ');
 		query = query.sort(sortBy);
 	} else {
-		query = query.sort('-created_date');
+		query = query.sort('-posted_date');
 	}
 
 	// Pagination
@@ -129,8 +127,6 @@ const handleGetSingleReview = asyncHandler(async (req, res, next) => {
 });
 
 const handleCreateReview = asyncHandler(async (req, res, next) => {
-	console.log(req.files);
-
 	// video file extensions
 	const allowedVideoExtensions = [
 		'video/mp4',
@@ -184,8 +180,6 @@ const handleCreateReview = asyncHandler(async (req, res, next) => {
 			uploaded_images.push(cloudinary_upload.secure_url);
 		}
 	}
-
-	console.log(uploaded_images, uploaded_videos);
 
 	const review_data = {
 		...req.body,
@@ -243,8 +237,6 @@ const handleMarkHelpful = asyncHandler(async (req, res, next) => {
 
 const handleMarkHelpfulAsGuest = asyncHandler(async (req, res, next) => {
 	const { id } = req.params;
-
-	console.log(ip.address());
 
 	// find review and update
 	const guest_has_marked = await Review.findOne({

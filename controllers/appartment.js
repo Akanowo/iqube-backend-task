@@ -13,6 +13,16 @@ const handleGetAllAppartments = asyncHandler(async (req, res, next) => {
 	});
 });
 
+const handleGetSingleApartment = asyncHandler(async (req, res, next) => {
+	const { id } = req.params;
+	const apartment = await Appartment.findById(id);
+
+	return res.status(200).json({
+		status: !!apartment,
+		data: apartment,
+	});
+});
+
 const handleCreateAppartment = asyncHandler(async (req, res, next) => {
 	const appartment_data = {
 		...req.body,
@@ -30,5 +40,6 @@ const handleCreateAppartment = asyncHandler(async (req, res, next) => {
 
 module.exports = {
 	handleGetAllAppartments,
+	handleGetSingleApartment,
 	handleCreateAppartment,
 };
