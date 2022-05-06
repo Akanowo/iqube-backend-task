@@ -185,13 +185,15 @@ const handleCreateReview = asyncHandler(async (req, res, next) => {
 		}
 	}
 
+	console.log(uploaded_images, uploaded_videos);
+
 	const review_data = {
 		...req.body,
 		review_id: uuidv4(),
 		appartment: req.params.appartment_id,
 		posted_by: req.user._id,
-		image: req.files.images ? uploaded_images : undefined,
-		video: req.files.videos ? uploaded_videos : undefined,
+		images: req.files.images ? uploaded_images : undefined,
+		videos: req.files.videos ? uploaded_videos : undefined,
 	};
 	const new_review = await Review.create(review_data);
 
